@@ -9613,68 +9613,66 @@ module.exports = function (regExp, replace) {
 "use strict";
 
 
-var _templateObject = _taggedTemplateLiteral(['i am ', ',', ''], ['i am ', ',', '']),
-    _templateObject2 = _taggedTemplateLiteral(['Hi\n', ''], ['Hi\\n', '']);
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+/**
+ * Symbol 新加的原始数据类型
+ * 表示独一无二
+ */
+
+// 声明
 {
-    console.log('a', 'a');
+    var a1 = Symbol();
+    var a2 = Symbol();
 
-    console.log('s', '\u20BB7');
+    console.log(Object.is(a1, a2)); // false
 
-    console.log('s', '\uD842\uDFB7');
+    var a3 = Symbol.for('a3');
+    var a4 = Symbol.for('a3');
+    console.log(Object.is(a3, a4));
 }
 
 {
-    var s = "吉利";
-    console.log(s.codePointAt(0));
-}
+    var _obj;
 
-{
-    var str = "string";
-    console.log(str.includes("c"));
-    console.log(str.startsWith("str"));
-    console.log(str.endsWith("ing"));
-}
+    var _a = Symbol.for('abc');
+    var obj = (_obj = {}, _defineProperty(_obj, _a, '123'), _defineProperty(_obj, 'abc', 345), _defineProperty(_obj, 'c', 456), _obj);
 
-{
-    var _str = "abc";
-    console.log(_str.repeat(3)); // 复制
-}
+    console.log(obj);
 
-{
-    var name = "list";
-    var info = "hello world";
-    var m = 'i am ' + name + ',' + info;
-    console.log(m);
-}
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
 
-// ES7草案
-{
-    console.log('1'.padStart(3, "0"));
-    console.log('1'.padEnd(4, '0'));
-}
+    try {
+        for (var _iterator = Object.entries(obj)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var _step$value = _slicedToArray(_step.value, 2),
+                key = _step$value[0],
+                value = _step$value[1];
 
-// 标签模板
+            console.log(key, value);
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
+        }
+    }
 
-{
-    var abc = function abc(s, v1, v2) {
-        console.log(s, v1, v2);
-        return s + v1 + v2;
-    };
-
-    var user = {
-        name: "codehtml",
-        info: "boy"
-    };
-
-    console.log(abc(_templateObject, user.name, user.info));
-}
-
-{
-    console.log(String.raw(_templateObject2, 1 + 2));
-    console.log('Hi\n' + (1 + 2));
+    var arr = Object.getOwnPropertySymbols(obj);
+    Reflect.ownKeys(obj).map(function (item) {
+        return console.log(item);
+    });
 }
 
 /***/ })
