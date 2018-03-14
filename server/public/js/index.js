@@ -9613,46 +9613,74 @@ module.exports = function (regExp, replace) {
 "use strict";
 
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 /**
- * Symbol 新加的原始数据类型
- * 表示独一无二
+ * generator
  */
 
-// 声明
 {
-    var a1 = Symbol();
-    var a2 = Symbol();
+    var tell = /*#__PURE__*/regeneratorRuntime.mark(function tell() {
+        return regeneratorRuntime.wrap(function tell$(_context) {
+            while (1) {
+                switch (_context.prev = _context.next) {
+                    case 0:
+                        _context.next = 2;
+                        return 'a';
 
-    console.log(Object.is(a1, a2)); // false
+                    case 2:
+                        _context.next = 4;
+                        return 'b';
 
-    var a3 = Symbol.for('a3');
-    var a4 = Symbol.for('a3');
-    console.log(Object.is(a3, a4));
+                    case 4:
+                        return _context.abrupt('return', 'c');
+
+                    case 5:
+                    case 'end':
+                        return _context.stop();
+                }
+            }
+        }, tell, this);
+    });
+
+    var k = tell();
+    console.log(k.next());
+    console.log(k.next());
+    console.log(k.next());
 }
 
 {
-    var _obj;
+    var obj = {};
+    obj[Symbol.iterator] = /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        return regeneratorRuntime.wrap(function _callee$(_context2) {
+            while (1) {
+                switch (_context2.prev = _context2.next) {
+                    case 0:
+                        _context2.next = 2;
+                        return 1;
 
-    var _a = Symbol.for('abc');
-    var obj = (_obj = {}, _defineProperty(_obj, _a, '123'), _defineProperty(_obj, 'abc', 345), _defineProperty(_obj, 'c', 456), _obj);
+                    case 2:
+                        _context2.next = 4;
+                        return 2;
 
-    console.log(obj);
+                    case 4:
+                        _context2.next = 6;
+                        return 3;
 
+                    case 6:
+                    case 'end':
+                        return _context2.stop();
+                }
+            }
+        }, _callee, this);
+    });
     var _iteratorNormalCompletion = true;
     var _didIteratorError = false;
     var _iteratorError = undefined;
 
     try {
-        for (var _iterator = Object.entries(obj)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var _step$value = _slicedToArray(_step.value, 2),
-                key = _step$value[0],
-                value = _step$value[1];
+        for (var _iterator = obj[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var value = _step.value;
 
-            console.log(key, value);
+            console.log(value);
         }
     } catch (err) {
         _didIteratorError = true;
@@ -9668,11 +9696,113 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             }
         }
     }
+}
 
-    var arr = Object.getOwnPropertySymbols(obj);
-    Reflect.ownKeys(obj).map(function (item) {
-        return console.log(item);
+{
+    // 状态机
+    var state = /*#__PURE__*/regeneratorRuntime.mark(function state() {
+        return regeneratorRuntime.wrap(function state$(_context3) {
+            while (1) {
+                switch (_context3.prev = _context3.next) {
+                    case 0:
+                        if (false) {
+                            _context3.next = 9;
+                            break;
+                        }
+
+                        _context3.next = 3;
+                        return 'A';
+
+                    case 3:
+                        _context3.next = 5;
+                        return 'B';
+
+                    case 5:
+                        _context3.next = 7;
+                        return 'C';
+
+                    case 7:
+                        _context3.next = 0;
+                        break;
+
+                    case 9:
+                    case 'end':
+                        return _context3.stop();
+                }
+            }
+        }, state, this);
     });
+
+    var st = state();
+    console.log(st.next());
+    console.log(st.next());
+    console.log(st.next());
+    console.log(st.next());
+    console.log(st.next());
+    console.log(st.next());
+}
+
+/* {
+    // 状态机
+    let state = async function(){
+        while(1){
+            await 'A';
+            await 'B';
+            await 'C';
+        }
+    }
+
+    let st = state();
+    console.log(st.next());
+    console.log(st.next());
+    console.log(st.next());
+    console.log(st.next());
+    console.log(st.next());
+    console.log(st.next());
+    
+} */
+
+{
+    // 实例抽奖
+    var draw = function draw(count) {
+        console.info('\u5269\u4F59\uFFE5{count}\u6B21\u6570');
+    };
+
+    var residu = /*#__PURE__*/regeneratorRuntime.mark(function residu(count) {
+        return regeneratorRuntime.wrap(function residu$(_context4) {
+            while (1) {
+                switch (_context4.prev = _context4.next) {
+                    case 0:
+                        if (!(count > 0)) {
+                            _context4.next = 6;
+                            break;
+                        }
+
+                        count--;
+                        _context4.next = 4;
+                        return draw(count);
+
+                    case 4:
+                        _context4.next = 0;
+                        break;
+
+                    case 6:
+                    case 'end':
+                        return _context4.stop();
+                }
+            }
+        }, residu, this);
+    });
+
+    var start = residu(5);
+
+    var btn = document.createComment('button');
+    btn.id = 'start';
+    btn.textContent = '抽奖';
+    document.appendChild(bin);
+    document.getElementById('start').addEventListener('click', function () {
+        start.next();
+    }, false);
 }
 
 /***/ })
